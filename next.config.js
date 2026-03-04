@@ -1,19 +1,12 @@
-/*fisrt methode avec next.config.ts
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-   config options here 
-};
-
-export default nextConfig;
-
-*/
-
-
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+  // Désactive le minificateur CSS natif qui cause le problème
+  swcMinify: false,
+  // Optionnel : utilisez le minificateur par défaut de Terser
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
