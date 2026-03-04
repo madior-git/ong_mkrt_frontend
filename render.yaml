@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ong-frontend
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        value:https://ong-mkrt-backend.onrender.com/api
+        sync: false
