@@ -162,7 +162,12 @@ export default function AdminServices() {
                   <button
                     onClick={() => {
                       setEditingService(service);
-                      setFormData(service);
+                      //setFormData(service);
+                      setFormData({
+                        title: service.title,
+                        description: service.description,
+                        icon: service.icon || ''
+                      });
                       setShowForm(true);
                     }}
                     className="text-blue-600 hover:text-blue-900"
