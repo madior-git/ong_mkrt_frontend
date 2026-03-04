@@ -18,22 +18,10 @@ export default function LoginPage() {
 
     try {
       const result = await login(email, password);
-
-      if (!result.success) {
-        return;
+      
+      if (result.success) {
+        router.push('/admin-activites');
       }
-
-      await fetch('/api/set-token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token: result.token }),
-      });
-
-      router.push('/admin-activites');
-
-
     } catch (error) {
       console.error(error);
     } finally {
