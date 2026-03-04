@@ -15,7 +15,7 @@ export default function AdminLayout({
   // Redirection si non connecté
   useEffect(() => {
     if (!loading && !user) {
-      console.log('❌ Non connecté, redirection');
+      console.log('❌ Non connecté, redirection.');
       window.location.replace('/login');
     }
   }, [user, loading]);
