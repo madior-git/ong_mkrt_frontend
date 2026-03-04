@@ -172,7 +172,13 @@ export default function AdminActivites() {
                   <button
                     onClick={() => {
                       setEditingActivity(activity);
-                      setFormData(activity);
+                      //setFormData(activity);
+                      setFormData({
+                        title: activity.title,
+                        description: activity.description,
+                        date: activity.date,
+                        location: activity.location || ''
+                      });
                       setShowForm(true);
                     }}
                     className="text-blue-600 hover:text-blue-900 p-2 rounded transition-colors"
