@@ -42,7 +42,7 @@ export default function AdminSidebar() {
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <li key={item.username}>
+              <li key={}>
                 <Link
                   href={item.href}
                   className={`flex items-center px-4 py-3 rounded-lg transition-colors ${
