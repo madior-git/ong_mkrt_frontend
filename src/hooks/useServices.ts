@@ -1,4 +1,4 @@
-// src/hooks/useServices.ts
+// src/hooks/useServices.ts 
 import { useState, useEffect } from 'react';
 import api from '@/lib/api';
 import toast from 'react-hot-toast';
@@ -15,21 +15,23 @@ export function useServices() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        console.log('📡 Récupération des services...');
-        const response = await api.get('/services');
-        console.log('✅ Services reçus:', response.data);
-        setServices(response.data);
-      } catch (error) {
-        console.error('❌ Erreur chargement services:', error);
-        toast.error('Erreur lors du chargement des services');
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Définir fetchServices en premier pour qu'il soit disponible partout
+  const fetchServices = async () => {
+    try {
+      console.log('📡 Récupération des services...');
+      const response = await api.get('/services');
+      console.log('✅ Services reçus:', response.data);
+      setServices(response.data);
+    } catch (error) {
+      console.error('❌ Erreur chargement services:', error);
+      toast.error('Erreur lors du chargement des services');
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // Appeler fetchServices au montage
+  useEffect(() => {
     fetchServices();
   }, []);
 
@@ -75,5 +77,5 @@ export function useServices() {
     updateService,
     deleteService,
     refresh: fetchServices
-   };
+  };
 }
