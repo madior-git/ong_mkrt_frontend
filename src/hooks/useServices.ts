@@ -33,5 +33,47 @@ export function useServices() {
     fetchServices();
   }, []);
 
-  return { services, loading };
+  const createService = async (data: any) => {
+    try {
+      const response = await api.post('/services', data);
+      toast.success('Service créé');
+      fetchServices();
+      return response.data;
+    } catch (error) {
+      toast.error('Erreur création');
+      throw error;
+    }
+  };
+
+  const updateService = async (id: number, data: any) => {
+    try {
+      const response = await api.put(`/services/${id}`, data);
+      toast.success('Service modifié');
+      fetchServices();
+      return response.data;
+    } catch (error) {
+      toast.error('Erreur modification');
+      throw error;
+    }
+  };
+
+  const deleteService = async (id: number) => {
+    try {
+      await api.delete(`/services/${id}`);
+      toast.success('Service supprimé');
+      fetchServices();
+    } catch (error) {
+      toast.error('Erreur suppression');
+      throw error;
+    }
+  };
+
+  return { 
+    services,
+    loading,
+    createService,
+    updateService,
+    deleteService,
+    refresh: fetchServices
+   };
 }
