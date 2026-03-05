@@ -31,7 +31,7 @@ export default function AdminSidebar() {
         <p className="text-sm text-gray-600 mt-1">Espace Admin</p>
         {user && (
           <p className="text-xs text-gray-500 mt-2">
-            Connecté en tant que <span className="font-medium">{user.name}</span>
+            Connecté en tant que <span className="font-medium">{user.username}</span>
           </p>
         )}
       </div>
@@ -42,7 +42,7 @@ export default function AdminSidebar() {
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <li key={item.name}>
+              <li key={item.username}>
                 <Link
                   href={item.href}
                   className={`flex items-center px-4 py-3 rounded-lg transition-colors ${
@@ -52,7 +52,7 @@ export default function AdminSidebar() {
                   }`}
                 >
                   <item.icon className="w-5 h-5 mr-3" />
-                  {item.name}
+                  {item.username}
                 </Link>
               </li>
             );
